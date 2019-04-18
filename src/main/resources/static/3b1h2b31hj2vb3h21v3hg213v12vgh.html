@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ChebuVrot</title>
+    <script
+            src="https://code.jquery.com/jquery-3.3.1.min.js"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="container">
+    <form id="contact" action="" method="post">
+        <h3>Chebuvrot 228 telegram bot New</h3>
+        <h4>Contact us today, and get reply with in 24 hours!</h4>
+        <fieldset>
+            <textarea placeholder="Text"  tabindex="1" id="text228" required autofocus></textarea>
+        </fieldset>
+
+        <fieldset>
+            <button name="submit" type="submit" id="contact-submit" >Submit</button>
+        </fieldset>
+    </form>
+
+</div>
+<script>
+    $( document ).ready(function() {
+        $('#contact-submit').click(function(e) {
+            e.stopPropagation();
+            e.preventDefault();
+            $.ajax({
+                url: "/process_message",
+                method: 'POST',
+                data: `{\"message\":\"${$('#text228').val()}\"}`,
+                contentType: 'application/json',
+                success: function(data) {
+                    alert('Done')
+                },
+
+            });
+
+        })
+    });
+</script>
+</body>
+</html>
